@@ -1,6 +1,5 @@
 package by.aleksabrakor.springcourse.controllers;
 
-import by.aleksabrakor.springcourse.dao.PersonDao;
 import by.aleksabrakor.springcourse.models.Person;
 import by.aleksabrakor.springcourse.services.ItemsService;
 import by.aleksabrakor.springcourse.services.PeopleService;
@@ -21,14 +20,12 @@ public class PeopleController {
     public  final ItemsService itemsService;
     private  final PersonValidator personValidator;
 
-    private  final PersonDao personDao;
 
     @Autowired
-    public PeopleController(PeopleService peopleService, ItemsService itemsService, PersonValidator personValidator, PersonDao personDao) {
+    public PeopleController(PeopleService peopleService, ItemsService itemsService, PersonValidator personValidator) {
         this.peopleService = peopleService;
         this.itemsService = itemsService;
         this.personValidator = personValidator;
-        this.personDao = personDao;
     }
 
     @GetMapping("/{id}")
@@ -41,16 +38,6 @@ public class PeopleController {
     @GetMapping
     public String index(Model model) {
         model.addAttribute("people", peopleService.findAll());
-
-//        //todo это никакого отношения к методу не имеет, используем как точка входа для дебагера, помечаем остановки на этих методах, когда доходит, то можем протестировать весь сервис, нажав на Evaluate expression или  alt+F8, сделать шаг к следующей точки остановки - нажать alt+F9 или Run to cursor
-//        itemsService.findByTitleItem("Заказ1");
-//        itemsService.findByOwner(peopleService.findById(1));
-//        peopleService.test();
-//        //
-
-        //todo тестируем проблему N+1
-        personDao.testProblemNPlus1();
-
         return "people/index";
     }
 

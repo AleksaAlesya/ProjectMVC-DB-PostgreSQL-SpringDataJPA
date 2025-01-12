@@ -57,32 +57,23 @@ public class PeopleService {
         return peopleRepository.findByName(name);
     }
 
-    ;
-
     public List<Person> findByNameOrderByAge(String name) {
         return peopleRepository.findByNameOrderByAge(name);
     }
-
-    ;
 
     public List<Person> findByEmail(String email) {
         return peopleRepository.findByEmail(email);
     }
 
-    ;
-
     public List<Person> findByNameStartingWith(String nameStartingWith) {
         return peopleRepository.findByNameStartingWith(nameStartingWith);
     }
-
-    ;
 
     List<Person> findByNameOrEmail(String name, String email) {
         return peopleRepository.findByNameOrEmail(name, email);
     }
 
-    ;
-
+    //метод создан для тестирования через дебагер этого сервиса, можно вызвать этот метод в котнроллере в методе index  и поставить на этом методе точку остановки
     public void test() {
         System.out.println("Testing here with debug");
     }

@@ -48,7 +48,6 @@ public class Person {
     private Date createdAt;
 
     @Enumerated(EnumType.STRING)
-//    @Enumerated(EnumType.ORDINAL) // устанавливается по умолчанию, в БД будет в инт, т.е. индекс этого перечисления
     private Mood mood;
 
     @OneToMany(mappedBy = "owner")

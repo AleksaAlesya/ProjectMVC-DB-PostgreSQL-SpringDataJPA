@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 //Dao класс может использоваться для сложных запросов, если в data jpa нет кастомных для нашей реализации
+// здесь неактуальные методы Hibernate, использовались до внедрения SpringDataJpa
 @Component
 public class PersonDao {
     private final EntityManager entityManager;
@@ -66,6 +67,7 @@ public class PersonDao {
                 .stream().findAny();
     }
 
+    //Метод создан для тестирования проблемы N+1, можно протестить в  контроллере в методе index
     @Transactional(readOnly = true)
     public void  testProblemNPlus1(){
         Session session = entityManager.unwrap(Session.class);
